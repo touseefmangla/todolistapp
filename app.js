@@ -2,15 +2,14 @@ const express = require("express");
 const ejs = require("ejs");
 const app = express();
 const _ = require("lodash");
+const env = require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://ta4760877_db_user:touseef123@cluster0.srcsfxp.mongodb.net/todolistDB",
-);
+mongoose.connect(process.env.MONGO_URI);
 
 const itemSchema = new mongoose.Schema({
   name: String,
@@ -109,7 +108,7 @@ app.get("/work", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about");
 });
-
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+const port = process.env.port || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
