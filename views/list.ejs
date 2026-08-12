@@ -1,0 +1,47 @@
+<%- include('header'); -%>
+<div class="container">
+  <h1 class="title"><%= listTitle %></h1>
+  <ul class="list">
+    <% newListItems.forEach((item) => { %>
+      <form action="/delete" method="POST">
+        <p class="list-item">
+          <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="toggleItem(this)" />
+          <input type="hidden" name="listName" value="<%= listTitle %>" />
+          <span><%= item.name %></span>
+        </p>
+      </form>
+    <% }); %>
+  </ul>
+  <form class="item" action="/" method="POST" onsubmit="return validateForm()">
+    <input type="text" class="input" name="newItem" id="itemInput" placeholder="Add a new item..." autocomplete="off" />
+    <button type="submit" name="list" value="<%= listTitle %>" class="button">+</button>
+    <p id="errorMsg" class="error-message"></p>
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    let input = document.getElementById("itemInput");
+    let errorMsg = document.getElementById("errorMsg");
+    if (input.value.trim() === "") {
+      errorMsg.textContent = "Please enter an item to add to the list";
+      return false;
+    }
+    errorMsg.textContent = "";
+    return true;
+  }
+
+  function toggleItem(checkbox) {
+    let parentItem = checkbox.closest('.list-item');
+    if (checkbox.checked) {
+      // Trigger the strike-through CSS class
+      parentItem.classList.add("cut");
+      
+      // Delay form submission by 350ms so user sees the animation finish
+      setTimeout(() => {
+        checkbox.form.submit();
+      }, 350);
+    }
+  }
+</script>
+<%- include('footer'); -%>

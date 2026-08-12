@@ -1,0 +1,158 @@
+/* Changed .body class to body element selector */
+body {
+  background: -webkit-linear-gradient(65deg, rgb(199, 79, 99) 50%, white 50%);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  background: rgba(199, 79, 99, 0.1);
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  min-width: 400px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.title {
+  background-color: #c74f63;
+  color: #000000;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.list-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.list-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  accent-color: #000;
+  cursor: pointer;
+}
+
+/* Strike-Through Line Animation */
+.list-item span {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.list-item span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease-in-out;
+}
+
+.list-item.cut {
+  opacity: 0.4;
+}
+
+.list-item.cut span::after {
+  width: 100%; /* Animates line across text */
+}
+
+/* Form Layout Fixes */
+form.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.input::placeholder {
+  color: #666;
+}
+
+.button {
+  background: #c71c38eb;
+  color: #fff;
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: #a84050;
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(1.05);
+}
+
+.error-message {
+  width: 100%;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.footer p {
+  color: #000000;
+  font-size: 0.9rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
